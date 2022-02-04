@@ -2,7 +2,7 @@
 
 Prueba de concepto de rest exception handler, con @RestControllerAdvice
 
-#Versiones
+# Versiones
 
 * Java 1.8
 * Spring boot 2.6.4-SNAPSHOT
