@@ -15,18 +15,33 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RestExceptionHandler.class);
 
+    /**
+     * Exception Handler para devolver estado 409 - Conflict
+     * @param e {@link RuntimeException}
+     * @return {@link ResponseEntity}
+     */
     @ExceptionHandler(value = {ConflictException.class})
     public ResponseEntity<?> handlerConflict(RuntimeException e){
         LOGGER.error("ERROR: ", e);
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }
 
+    /**
+     * Exception Handler para devolver estado 404 - Not Found
+     * @param e {@link RuntimeException}
+     * @return {@link ResponseEntity}
+     */
     @ExceptionHandler(value = {NotFoundException.class})
     public ResponseEntity<?> handlerNotFound(RuntimeException e){
         LOGGER.error("ERROR: ", e);
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Exception Handler para devolver estado 500 - Internet server error
+     * @param e {@link Exception}
+     * @return {@link ResponseEntity}
+     */
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<?> handlerInternalError(Exception e){
         LOGGER.error("ERROR: ", e);
